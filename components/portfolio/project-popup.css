@@ -1,0 +1,76 @@
+/* Custom styling for project popup content */
+.custom-content h1,
+.custom-content h2,
+.custom-content h3,
+.custom-content h4,
+.custom-content h5,
+.custom-content h6 {
+  color: var(--foreground);
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+}
+
+.custom-content h3 {
+  font-size: 1.25rem;
+}
+
+.custom-content p {
+  margin-bottom: 1rem;
+}
+
+.custom-content a {
+  color: #7a7fee;
+}
+
+.custom-content a:hover {
+  text-decoration: underline;
+}
+
+.custom-content ul,
+.custom-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.custom-content ul {
+  list-style-type: disc;
+}
+
+.custom-content ol {
+  list-style-type: decimal;
+}
+
+.custom-content strong {
+  font-weight: 600;
+}
+
+.custom-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.custom-content blockquote {
+  border-left: 4px solid #7a7fee;
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.custom-content pre {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.dark .custom-content pre {
+  background-color: #1f2937;
+}
+
+.custom-content code {
+  font-family: monospace;
+}
