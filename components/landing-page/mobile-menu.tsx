@@ -76,7 +76,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {mounted ? (
               <Image
                 src={logoSrc || "/placeholder.svg"}
-                alt="Automatic Logo"
+                alt="Opsly logo"
                 width={150}
                 height={40}
                 className="h-8 w-auto"
@@ -208,29 +208,29 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             <li>
               <Link
-                href="/portfolio"
+                href="/agents"
                 className={`flex items-center py-3 px-4 rounded-lg text-base ${
-                  pathname === "/portfolio"
+                  pathname === "/agents"
                     ? "bg-[#7A7FEE]/10 text-[#7A7FEE]"
                     : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
                 onClick={onClose}
               >
-                Portfolio
+                Agents
               </Link>
             </li>
 
             <li>
               <Link
-                href="/start"
+                href="/hire-agents"
                 className={`flex items-center py-3 px-4 rounded-lg text-base ${
-                  pathname === "/start"
+                  pathname === "/hire-agents"
                     ? "bg-[#7A7FEE]/10 text-[#7A7FEE]"
                     : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
                 onClick={onClose}
               >
-                Start Project
+                Hire Agents
               </Link>
             </li>
           </ul>

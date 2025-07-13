@@ -14,14 +14,35 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: "Automatic - Your AI-first Development Partner",
-  description:
-    "We build high-quality, scalable platforms—client portals, marketplaces, AI automations, and SaaS—using the best tools for the job, no shortcuts.",
-  icons: {
-    icon: [{ url: "/automatic-favicon-no-bg.png", type: "image/png" }],
-    apple: [{ url: "/automatic-favicon-no-bg.png" }],
+  title: "Opsly - Hire AI agents that work like teammates.",
+  description: "Hire AI agents that work like teammates.",
+  metadataBase: new URL("https://opsly.ca"), // Replace with your actual domain
+  openGraph: {
+    title: "Opsly - Hire AI agents that work like teammates.",
+    description: "Hire AI agents that work like teammates.",
+    url: "https://opsly.ca", // Replace with your actual domain
+    siteName: "Opsly",
+    images: [
+      {
+        url: "/opsly-favicon-no-bg.png",
+        width: 1200,
+        height: 630,
+        alt: "Opsly",
+      },
+    ],
+    locale: "en_US",
   },
-    generator: 'v0.dev'
+  twitter: {
+    card: "summary_large_image",
+    title: "Opsly - Hire AI agents that work like teammates.",
+    description: "Hire AI agents that work like teammates.",
+    images: ["/opsly-favicon-no-bg.png"],
+  },
+  icons: {
+    icon: [{ url: "/opsly-favicon-no-bg.png", type: "image/png" }],
+    shortcut: ["/opsly-favicon-no-bg.png"],
+    apple: [{ url: "/opsly-favicon-no-bg.png" }],
+  },
 }
 
 export default function RootLayout({

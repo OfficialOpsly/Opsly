@@ -24,7 +24,7 @@ export default function Footer() {
           {mounted ? (
             <Image
               src={logoSrc || "/placeholder.svg"}
-              alt="Automatic Logo"
+              alt="Opsly logo"
               width={200}
               height={50}
               className="h-12 w-auto"
@@ -34,11 +34,11 @@ export default function Footer() {
           )}
         </Link>
         <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto mb-8">
-          Your AI-first development partner building high-quality, scalable platforms.
+          Hire AI agents that work like teammates.
         </p>
 
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Automatic. All rights reserved.
+          © {new Date().getFullYear()} Opsly. All rights reserved.
         </p>
       </div>
     </footer>

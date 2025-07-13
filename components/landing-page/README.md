@@ -1,6 +1,6 @@
-# Automatic Landing Page Component
+# Opsly Landing Page Component
 
-This is a modular landing page component for the Automatic website. It's designed to be easily imported and used in any Next.js application.
+This is a modular landing page component for the Opsly website. It's designed to be easily imported and used in any Next.js application.
 
 ## Quick Integration
 
@@ -19,7 +19,7 @@ Make sure to include these assets in your public directory:
 
 - `/logo-light.png` - Light mode logo
 - `/logo-dark.png` - Dark mode logo
-- `/automatic-favicon-no-bg.png` - The Automatic favicon
+- `/opsly-favicon-no-bg.png` - The Opsly favicon
 - `/purple-circle-wave-static.png` - The purple wave graphic used in hero and CTA sections
 - `/noise-texture.png` - Texture for dark mode cards
 - Project images (or replace with your own)

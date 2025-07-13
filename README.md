@@ -1,6 +1,6 @@
-# Automatic
-
+# Opsly
 *Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/hadiahmed13s-projects/v0-automatic)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/gxvXZOrgFHP)

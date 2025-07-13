@@ -71,7 +71,7 @@ export default function Header() {
               {mounted ? (
                 <Image
                   src={logoSrc || "/placeholder.svg"}
-                  alt="Automatic Logo"
+                  alt="Opsly logo"
                   width={200}
                   height={50}
                   className="h-12 w-auto"
@@ -96,26 +96,26 @@ export default function Header() {
                   </li>
                   <li>
                     <Link
-                      href="/portfolio"
+                      href="/agents"
                       className={`transition-colors ${
-                        pathname === "/portfolio"
+                        pathname === "/agents"
                           ? "text-[#7A7FEE] dark:text-[#7A7FEE]"
                           : "text-black dark:text-white hover:text-[#7A7FEE] dark:hover:text-[#7A7FEE]"
                       }`}
                     >
-                      Portfolio
+                      Agents
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/start"
+                      href="/hire-agents"
                       className={`transition-colors ${
-                        pathname === "/start"
+                        pathname === "/hire-agents"
                           ? "text-[#7A7FEE] dark:text-[#7A7FEE]"
                           : "text-black dark:text-white hover:text-[#7A7FEE] dark:hover:text-[#7A7FEE]"
                       }`}
                     >
-                      Start Project
+                      Hire Agents
                     </Link>
                   </li>
                 </ul>

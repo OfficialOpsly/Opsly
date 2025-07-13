@@ -1,19 +1,17 @@
 "use client"
 
-interface PortfolioFiltersProps {
+interface AgentFiltersProps {
   activeFilter: string
   setActiveFilter: (filter: string) => void
 }
 
-export default function PortfolioFilters({ activeFilter, setActiveFilter }: PortfolioFiltersProps) {
+export default function AgentFilters({ activeFilter, setActiveFilter }: AgentFiltersProps) {
   const filters = [
-    { id: "all", label: "All Projects" },
-    { id: "web", label: "Web Applications" },
-    { id: "web3", label: "Web3 & Blockchain" },
-    { id: "ai", label: "AI Solutions" },
-    { id: "design", label: "UX/UI Design" },
-    { id: "bubble", label: "Bubble Projects" },
-    { id: "mobile", label: "Mobile Apps" },
+    { id: "All Agents", label: "All Agents" },
+    { id: "Customer Support", label: "Customer Support" },
+    { id: "Sales", label: "Sales" },
+    { id: "Email", label: "Email" },
+    { id: "Custom", label: "Custom" },
   ]
 
   return (
