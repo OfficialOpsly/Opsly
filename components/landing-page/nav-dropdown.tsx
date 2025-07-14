@@ -147,7 +147,7 @@ export default function NavDropdown({
       <button
         ref={triggerRef}
         onClick={toggleDropdown}
-        className={`flex items-center gap-1 transition-colors ${
+        className={`flex items-center gap-1 transition-colors transform hover:scale-105 transition ${
           isOpen
             ? "text-[#7A7FEE] dark:text-[#7A7FEE]"
             : "text-black dark:text-white hover:text-[#7A7FEE] dark:hover:text-[#7A7FEE]"

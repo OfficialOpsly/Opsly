@@ -126,7 +126,7 @@ export default function Header() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-md bg-transparent hover:bg-gray-200/50 dark:hover:bg-gray-800/20 md:hidden"
+                className="p-2 rounded-md bg-transparent hover:bg-gray-200/50 dark:hover:bg-gray-800/20 md:hidden transform hover:scale-105 transition"
                 aria-label="Toggle menu"
               >
                 <Menu className="h-6 w-6 text-black dark:text-white" />

@@ -123,12 +123,12 @@
   .btn-primary {
     background-color: #7a7fee;
     color: #ffffff;
-    @apply px-6 py-2.5 rounded-md hover:bg-opacity-90 transition-all text-sm font-medium shadow-sm;
+    @apply px-6 py-2.5 rounded-md hover:bg-opacity-90 transition-all text-sm font-medium shadow-sm transform hover:scale-105 transition;
   }
 
   .btn-secondary {
     color: var(--foreground);
-    @apply hover:underline transition-all text-sm font-medium py-2.5;
+    @apply hover:underline transition-all text-sm font-medium py-2.5 transform hover:scale-105 transition;
   }
 
   .section-title {
