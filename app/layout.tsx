@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import "@/components/landing-page/styles.css"
 import { Suspense } from "react"
+import Script from "next/script"
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -53,9 +54,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={outfit.className}>
-        <script
+        <Script
           src="https://cdn.jsdelivr.net/npm/@vonage/client-sdk@2.0.0/dist/vonage-voice.min.js"
-          defer
+          strategy="afterInteractive"
         />
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
