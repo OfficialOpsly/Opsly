@@ -1,67 +1,40 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Voice } from '@vonage/client-sdk';
 
 export default function CallWidget() {
-  const [status, setStatus] = useState('idle');
-  const [voiceClient, setVoiceClient] = useState<any>(null);
-  const [sdkReady, setSdkReady] = useState(false);
-  const [sdkTried, setSdkTried] = useState(false);
-
-  // Wait for the SDK to load
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    function checkSDK(attempts = 0) {
-      // @ts-ignore
-      if (typeof window !== 'undefined' && window.VonageVoiceSDK && window.VonageVoiceSDK.VoiceClient) {
-        setSdkReady(true);
-      } else if (attempts > 100) { // 10s
-        setSdkTried(true);
-      } else {
-        timeout = setTimeout(() => checkSDK(attempts + 1), 100);
-      }
-    }
-    checkSDK();
-    return () => clearTimeout(timeout);
-  }, []);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'calling' | 'error'>('idle');
+  const [client, setClient] = useState<any>(null);
 
   const startCall = async () => {
-    if (!sdkReady) {
-      setSdkTried(true);
-      return;
-    }
     setStatus('loading');
-    const res = await fetch('/api/vonage-token');
-    const { token } = await res.json();
-
-    let client = voiceClient;
-    if (!client) {
-      // @ts-ignore
-      const win: any = window;
-      const VoiceClient = win.VonageVoiceSDK.VoiceClient;
-      client = new VoiceClient();
-      setVoiceClient(client);
-    }
 
     try {
-      await client.login(token);
+      const res = await fetch('/api/vonage-token');
+      const { token } = await res.json();
 
-      client.on('call:status', (payload: any) => {
-        if (payload.status === 'answered') {
-          setStatus('calling');
-        } else if (payload.status === 'completed') {
-          setStatus('idle');
-        }
+      let voiceClient = client;
+
+      if (!voiceClient) {
+        voiceClient = new Voice();
+        setClient(voiceClient);
+      }
+
+      await voiceClient.login(token);
+
+      voiceClient.on('open', () => {
+        setStatus('calling');
+        voiceClient.callServer(); // triggers your NCCO
       });
 
-      client.on('error', (err: any) => {
-        console.error(err);
+      voiceClient.on('disconnect', () => setStatus('idle'));
+      voiceClient.on('error', (err: any) => {
+        console.error('Call error:', err);
         setStatus('error');
       });
-
-      client.callServer();
     } catch (err) {
-      console.error(err);
+      console.error('Token fetch error:', err);
       setStatus('error');
     }
   };
@@ -71,9 +44,8 @@ export default function CallWidget() {
       id="call-widget"
       className="relative my-8 flex items-center justify-center z-20"
     >
-      {/* Animated border glow */}
       <div className="absolute inset-0 rounded-2xl pointer-events-none animate-pulse-slow border-4 border-[#7A7FEE] shadow-[0_0_40px_10px_rgba(122,127,238,0.4)]" style={{ filter: 'blur(2px)' }} />
-      <div className="relative bg-gradient-to-br from-[#23242a] via-[#282a36] to-[#181924] dark:from-[#181924] dark:via-[#23242a] dark:to-[#23242a] text-white rounded-2xl shadow-2xl px-12 py-14 flex flex-col items-center max-w-lg w-full border border-[#7A7FEE]">
+      <div className="relative bg-gradient-to-br from-[#23242a] via-[#282a36] to-[#181924] text-white rounded-2xl shadow-2xl px-12 py-14 flex flex-col items-center max-w-lg w-full border border-[#7A7FEE]">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-white drop-shadow-lg text-center">
           Call Our AI Secretary
         </h1>
@@ -92,17 +64,6 @@ export default function CallWidget() {
               ? 'Connecting...'
               : '🎙️ Call Now'}
           </button>
-          {!sdkReady && !sdkTried && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 mt-16 text-sm text-gray-300 flex items-center gap-2">
-              <svg className="animate-spin h-5 w-5 text-[#7A7FEE]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" /></svg>
-              Loading call feature…
-            </div>
-          )}
-          {sdkTried && !sdkReady && (
-            <div className="mt-4 text-red-400 font-semibold text-center">
-              The call feature could not be loaded.<br />Please check your connection or try disabling ad/script blockers.
-            </div>
-          )}
         </div>
         {status === 'error' && (
           <div className="mt-6 text-red-400 font-semibold">An error occurred. Please try again.</div>

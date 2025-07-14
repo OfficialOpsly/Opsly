@@ -26,7 +26,7 @@ export default function Hero() {
         </div>
 
         {/* CallWidget replaces the image on the right, centered vertically */}
-        <div className="hidden md:flex md:w-2/5 md:items-center md:justify-center">
+        <div className="w-full md:w-2/5 mt-8 md:mt-0 md:flex md:items-center md:justify-center">
           <CallWidget />
         </div>
       </div>
