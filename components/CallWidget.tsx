@@ -62,77 +62,40 @@ export default function CallWidget() {
   };
 
   return (
-    <section
-      id="call-widget"
-      className="relative my-8 flex items-center justify-center z-20"
-    >
-      <div
-        className="absolute inset-0 rounded-2xl pointer-events-none animate-pulse-slow border-4 border-[#7A7FEE] shadow-[0_0_40px_10px_rgba(122,127,238,0.4)]"
-        style={{ filter: 'blur(2px)' }}
-      />
-      <div className="relative bg-gradient-to-br from-[#23242a] via-[#282a36] to-[#181924] text-white rounded-2xl shadow-2xl px-12 py-14 flex flex-col items-center max-w-lg w-full border border-[#7A7FEE]">
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-white drop-shadow-lg text-center">
-          Call Our AI Secretary
-        </h1>
-        <p className="mb-8 text-base md:text-lg max-w-md text-gray-200 text-center font-medium">
-          Try our interactive voice demo powered by Vonage!
-        </p>
-        <div className="relative w-full flex flex-col items-center">
-          <button
-            onClick={startCall}
-            disabled={status === 'loading' || status === 'calling'}
-            className="px-10 py-4 rounded-xl bg-[#6d72e8] text-white font-bold text-xl shadow-lg hover:bg-[#4346a6] transition duration-200 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-[#7A7FEE] focus:ring-offset-2 animate-bounce-once transform hover:scale-105 w-full"
-          >
-            {status === 'calling'
-              ? '📞 In Call...'
-              : status === 'loading'
-              ? 'Connecting...'
-              : '🎙️ Call Now'}
-          </button>
+    <section id="call-widget" className="card my-8 relative overflow-hidden shadow-md">
+      <div className="p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center md:items-stretch">
+        {/* Left side: Call widget UI */}
+        <div className="w-full md:w-2/5 flex items-center justify-center">
+          <div className="relative w-full flex flex-col items-center max-w-xs">
+            <button
+              onClick={startCall}
+              disabled={status === 'loading' || status === 'calling'}
+              className="px-10 py-4 rounded-xl bg-[#6d72e8] text-white font-bold text-xl shadow-lg hover:bg-[#4346a6] transition duration-200 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-[#7A7FEE] focus:ring-offset-2 w-full"
+            >
+              {status === 'calling'
+                ? '📞 In Call...'
+                : status === 'loading'
+                ? 'Connecting...'
+                : '🎙️ Call Now'}
+            </button>
+            {status === 'error' && (
+              <div className="mt-6 text-red-500 dark:text-red-400 font-semibold">
+                An error occurred. Please try again.
+              </div>
+            )}
+          </div>
         </div>
-        {status === 'error' && (
-          <div className="mt-6 text-red-400 font-semibold">An error occurred. Please try again.</div>
-        )}
-      </div>
 
-      <style jsx>{`
-        @keyframes pulse-slow {
-          0%, 100% {
-            opacity: 0.7;
-            box-shadow: 0 0 40px 10px rgba(122,127,238,0.4);
-          }
-          50% {
-            opacity: 1;
-            box-shadow: 0 0 60px 20px rgba(122,127,238,0.7);
-          }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 2.5s infinite;
-        }
-        @keyframes bounce-once {
-          0% {
-            transform: scale(1);
-          }
-          20% {
-            transform: scale(1.08);
-          }
-          40% {
-            transform: scale(0.97);
-          }
-          60% {
-            transform: scale(1.03);
-          }
-          80% {
-            transform: scale(0.99);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounce-once:active {
-          animation: bounce-once 0.4s;
-        }
-      `}</style>
+        {/* Right side: Text content */}
+        <div className="w-full md:w-3/5 z-10 mt-8 md:mt-0 md:pl-10 flex flex-col justify-center text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-black dark:text-white">
+            Call Our AI Secretary
+          </h2>
+          <p className="my-6 text-base md:text-lg max-w-md text-gray-700 dark:text-gray-300">
+            Try our interactive voice demo powered by Vonage!
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

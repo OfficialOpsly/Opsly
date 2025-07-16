@@ -1,6 +1,5 @@
 import Image from "next/image"
-import ContactFormButton from "./contact-form-button"
-import CallWidget from "../CallWidget"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -9,25 +8,33 @@ export default function Hero() {
         {/* Text content - takes full width on mobile */}
         <div className="w-full md:w-3/5 z-10">
           <h1 className="text-black dark:text-white">
-            Your AI-first
-            <span className="block text-[#7A7FEE] dark:text-[#7A7FEE]">Development</span>
-            Partner
+            Hire AI Agents as
+            <span className="block text-[#7A7FEE] dark:text-[#7A7FEE]">Your Next Virtual</span>
+            Assistant
           </h1>
           <p className="my-6 text-sm md:text-base max-w-md text-gray-700 dark:text-gray-300">
-            We build high-quality, scalable platforms—client portals, marketplaces, AI automations, and SaaS—using the
-            best tools for the job, no shortcuts.
+            Opsly’s on‑demand AI agents handle your repetitive work, email triage, appointment booking and lead
+            follow‑up, so you can focus on growth.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <ContactFormButton />
-            <a href="#services" className="btn-secondary text-black dark:text-white">
-              Learn more
-            </a>
+            <Link href="/agents" className="btn-primary">
+              Browse Agents
+            </Link>
+            <Link href="/hire-agents" className="btn-secondary text-black dark:text-white">
+              Request a Demo
+            </Link>
           </div>
         </div>
 
-        {/* CallWidget replaces the image on the right, centered vertically */}
-        <div className="w-full md:w-2/5 mt-8 md:mt-0 md:flex md:items-center md:justify-center">
-          <CallWidget />
+        {/* Image on the right */}
+        <div className="hidden w-full md:w-2/5 mt-8 md:mt-0 md:flex md:items-center md:justify-center">
+          <Image
+            src="/purple-circle-wave-static.png"
+            alt="AI Agents"
+            width={300}
+            height={300}
+            className="object-contain"
+          />
         </div>
       </div>
     </section>

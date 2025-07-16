@@ -9,9 +9,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { Menu } from "lucide-react"
 import ThemeToggle from "./theme-toggle"
 import { useTheme } from "next-themes"
-import NavDropdown from "./nav-dropdown"
 import MobileMenu from "./mobile-menu"
-import { resourcesDropdownData } from "./nav-data"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -86,14 +84,6 @@ export default function Header() {
               {/* Desktop Navigation */}
               <nav className="hidden md:block">
                 <ul className="flex space-x-6">
-                  <li className="hidden md:block">
-                    <NavDropdown
-                      trigger="Resources"
-                      items={resourcesDropdownData}
-                      columns={2}
-                      className={pathname.startsWith("/resources") ? "text-[#7A7FEE] dark:text-[#7A7FEE]" : ""}
-                    />
-                  </li>
                   <li>
                     <Link
                       href="/agents"

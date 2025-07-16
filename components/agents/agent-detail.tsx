@@ -1,37 +1,47 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import Header from "@/components/landing-page/header"
 import Footer from "@/components/landing-page/footer"
-import type { AgentCard } from "@/data/agents"
+import type { AgentCard as AgentCardType } from "@/data/agents"
 
-interface AgentDetailPageProps {
-  agent: AgentCard
+interface AgentDetailProps {
+  agent: AgentCardType
 }
 
-export default function AgentDetailPage({ agent }: AgentDetailPageProps) {
+export default function AgentDetail({ agent }: AgentDetailProps) {
+  const searchParams = useSearchParams()
+  const fromHome = searchParams.get("from") === "home"
+
+  const backLinkHref = fromHome ? "/" : "/agents"
+  const backLinkText = fromHome ? "Back to Home" : "Back to Agents"
+
   return (
     <main className="min-h-screen bg-white dark:bg-[#111111]">
       <Header />
       <div className="container py-12">
-        <Link href="/agents" className="inline-flex items-center text-gray-400 hover:text-[#7A7FEE] mb-8">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Agents
-        </Link>
+        <div className="mb-8">
+          <Link
+            href={backLinkHref}
+            className="inline-flex items-center text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {backLinkText}
+          </Link>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 mb-8 flex items-center justify-center">
-              <Image
-                src={agent.heroImage || "/placeholder.svg?height=600&width=800&query=project"}
-                alt={agent.name}
-                width={1200}
-                height={675}
-                className="max-w-full h-auto object-contain max-h-[600px]"
-                priority
-              />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="bg-gray-100 dark:bg-gray-800/50 rounded-2xl p-6 flex items-center justify-center">
+            <Image
+              src={agent.heroImage || "/placeholder.svg?height=600&width=800&query=project"}
+              alt={agent.name}
+              width={1200}
+              height={675}
+              className="max-w-full h-auto object-contain max-h-[600px]"
+              priority
+            />
           </div>
 
           <div className="lg:col-span-1">

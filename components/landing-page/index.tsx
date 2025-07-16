@@ -1,5 +1,6 @@
 import Header from "./header"
 import Hero from "./hero"
+import CallWidget from "../CallWidget"
 import UseCases from "./use-cases"
 import Services from "./services"
 import Faq from "./faq"
@@ -9,7 +10,7 @@ import HireAgentsForm from "./hire-agents-form"
 import type { LandingPageProps } from "./types"
 
 // Export individual components for flexible usage
-export { Header, Hero, UseCases, Services, Faq, CallToAction, Footer, HireAgentsForm }
+export { Header, Hero, CallWidget, UseCases, Services, Faq, CallToAction, Footer, HireAgentsForm }
 
 // Main component that combines all sections
 export default function LandingPage({ showHeader = true, showFooter = true }: LandingPageProps) {
@@ -18,6 +19,7 @@ export default function LandingPage({ showHeader = true, showFooter = true }: La
       {showHeader && <Header />}
       <div className="container pt-4">
         <Hero />
+        <CallWidget />
         <UseCases />
         <Services />
         <Faq />

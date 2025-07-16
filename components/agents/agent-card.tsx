@@ -4,12 +4,14 @@ import type { AgentCard as AgentCardType } from "@/data/agents"
 
 interface AgentCardProps {
   item: AgentCardType
+  source?: "home"
 }
 
-export default function AgentCard({ item }: AgentCardProps) {
+export default function AgentCard({ item, source }: AgentCardProps) {
+  const href = source === "home" ? `/agents/${item.id}?from=home` : `/agents/${item.id}`
   return (
     <div className="card overflow-hidden rounded-3xl bg-white dark:bg-[#272829] border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-lg h-full">
-      <Link href={`/agents/${item.id}`} className="block h-full flex flex-col">
+      <Link href={href} className="block h-full flex flex-col">
         <div className="flex items-center justify-center p-4 pt-6 bg-gray-100 dark:bg-gray-800 relative">
           <Image
             src={item.heroImage || "/placeholder.svg?height=600&width=800&query=project"}
