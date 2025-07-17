@@ -19,7 +19,7 @@ export default function LandingPage({ showHeader = true, showFooter = true }: La
       {showHeader && <Header />}
       <div className="container pt-4">
         <Hero />
-        <CallWidget />
+        /*<CallWidget />*/
         <UseCases />
         <Services />
         <Faq />

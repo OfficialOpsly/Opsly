@@ -1,39 +1,41 @@
-// /pages/api/start-call.ts
+import { NextResponse } from 'next/server';
 
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function POST() {
   const VONAGE_API_KEY = process.env.VONAGE_API_KEY!;
   const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET!;
-  const VONAGE_NUMBER = process.env.VONAGE_NUMBER!;
-  const TO_NUMBER = process.env.TEST_NUMBER!; // your own number or client
+  const VONAGE_VIRTUAL_NUMBER = process.env.VONAGE_VIRTUAL_NUMBER!;
+  const TO_NUMBER = process.env.TO_NUMBER!; // or omit if using WebSocket
 
-  const response = await fetch(`https://api.nexmo.com/v1/calls`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Basic ' + Buffer.from(`${VONAGE_API_KEY}:${VONAGE_API_SECRET}`).toString('base64'),
-    },
-    body: JSON.stringify({
-      to: [{ type: 'phone', number: TO_NUMBER }],
-      from: { type: 'phone', number: VONAGE_NUMBER },
-      ncco: [
-        {
-          action: 'connect',
-          endpoint: [
-            {
-              type: 'websocket',
-              uri: 'wss://yourdomain.com/ws/voice',
-              contentType: 'audio/l16;rate=16000',
-              headers: { session: 'user123' },
-            },
-          ],
-        },
-      ],
-    }),
-  });
+  const nccoUrl = 'https://www.opsly.ca/api/voice-ncco'; // we’ll build this next
 
-  if (!response.ok) return res.status(500).json({ error: 'Call failed to initiate' });
+  const body = {
+    to: [{ type: 'phone', number: TO_NUMBER }],
+    from: { type: 'phone', number: VONAGE_VIRTUAL_NUMBER },
+    answer_url: [nccoUrl],
+  };
 
-  return res.status(200).json({ message: 'Call initiated' });
+  try {
+    const res = await fetch('https://api.nexmo.com/v1/calls', {
+      method: 'POST',
+      headers: {
+        'Authorization':
+          'Basic ' +
+          Buffer.from(`${VONAGE_API_KEY}:${VONAGE_API_SECRET}`).toString('base64'),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      console.error('Vonage API error:', result);
+      return NextResponse.json({ error: 'Vonage API error', details: result }, { status: 500 });
+    }
+
+    return NextResponse.json({ message: 'Call initiated!', callId: result.uuid });
+  } catch (err) {
+    console.error('Error starting call:', err);
+    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+  }
 }

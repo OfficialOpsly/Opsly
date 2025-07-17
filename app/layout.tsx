@@ -54,10 +54,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={outfit.className}>
-        <Script
-          src="https://cdn.jsdelivr.net/npm/@vonage/client-sdk@2.0.0/dist/vonage-voice.min.js"
-          strategy="afterInteractive"
-        />
         <Suspense fallback={null}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}
