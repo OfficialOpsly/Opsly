@@ -11,6 +11,7 @@ export default function AgentFilters({ activeFilter, setActiveFilter }: AgentFil
     { id: "Customer Support", label: "Customer Support" },
     { id: "Sales", label: "Sales" },
     { id: "Email", label: "Email" },
+    { id: "Custom", label: "Finance" },
     { id: "Custom", label: "Custom" },
   ]
 

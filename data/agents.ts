@@ -55,11 +55,11 @@ export const agents: AgentCard[] = [
   },
   {
     id: "faq-agent",
-    name: "Freddy the FAQ Agent",
+    name: "Sandra the FAQ Agent",
     category: "Customer Support",
     tagline: "“I answer before they ask.”",
     intro: "I never say 'I'll get back to you on that.'",
-    description: "Freddy answers top customer questions 24/7, from return policies to business hours—no human wait time.",
+    description: "Sandra answers top customer questions 24/7, from return policies to business hours—no human wait time.",
     heroImage: "/faq-agent.png",
   },
   {
