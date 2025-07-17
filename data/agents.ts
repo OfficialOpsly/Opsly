@@ -15,7 +15,7 @@ export const agents: AgentCard[] = [
     tagline: "“I triage 500 emails before lunch.”",
     intro: "If you CC me, I’ll CC-ya later 😄",
     description: "Ellie classifies, drafts and schedules emails with perfect tone-matching and CRM sync.",
-    heroImage: "/public/email-agent.jpg",
+    heroImage: "/email-agent.jpg",
   },{
     id: "customer-service-agent",
     name: "Cimo the Customer Service Agent",
@@ -23,7 +23,7 @@ export const agents: AgentCard[] = [
     tagline: "Meetings booked, humans hooked.",
     intro: "Front desk vibes, backend skills",
     description: "Cimo is on the line with customers 24/7, logging requests, checking availability and booking meeting directly into your Google calander. Always accurate, always on time.",
-    heroImage: "/public/customer-service-agent.png"
+    heroImage: "/customer-service-agent.png"
   },
   {
     id: "sales-agent",
@@ -32,7 +32,7 @@ export const agents: AgentCard[] = [
     tagline: "“Closing deals while you sleep.”",
     intro: "My favourite drink? Conversion.",
     description: "Sal cold-calls leads, handles objections and pushes prospects into HubSpot or Salesforce.",
-    heroImage: "/public/sales-agent.png",
+    heroImage: "/sales-agent.png",
   },
   {
     id: "recruiter-agent",
@@ -41,7 +41,7 @@ export const agents: AgentCard[] = [
     tagline: "“I screen resumes like Netflix.”",
     intro: "I find talent before HR wakes up.",
     description: "Rhea pre-screens applicants, books interviews, and updates hiring pipelines so your team doesn't have to.",
-    heroImage: "/public/recruiter-agent.png",
+    heroImage: "/recruiter-agent.png",
   },
   {
     id: "finance-agent",
@@ -50,7 +50,7 @@ export const agents: AgentCard[] = [
     tagline: "“I budget like a boss.”",
     intro: "Money talks. I listen.",
     description: "Finny checks transactions, flags issues, and offers budgeting tips or investment nudges. Your wallet’s BFF.",
-    heroImage: "/public/finance-agent.png",
+    heroImage: "/finance-agent.png",
   },
   {
     id: "faq-agent",
@@ -59,7 +59,7 @@ export const agents: AgentCard[] = [
     tagline: "“I answer before they ask.”",
     intro: "I never say 'I'll get back to you on that.'",
     description: "Freddy answers top customer questions 24/7, from return policies to business hours—no human wait time.",
-    heroImage: "/public/faq-agent.png",
+    heroImage: "/faq-agent.png",
   },
   {
     id: "followup-agent",
@@ -68,7 +68,7 @@ export const agents: AgentCard[] = [
     tagline: "“No lead left behind.”",
     intro: "I chase leads so you don’t have to.",
     description: "Faye follows up on quotes, abandoned carts, or stale leads—nudging them toward conversion gently but persistently.",
-    heroImage: "/public/followup-agent.png",
+    heroImage: "/followup-agent.png",
   },
   {
     id: "concierge-agent",
@@ -77,6 +77,6 @@ export const agents: AgentCard[] = [
     tagline: "“Requests handled with flair.”",
     intro: "Front desk vibes, backend skills.",
     description: "Connie fields customer calls, logs requests, and coordinates services—like a hotel concierge, but scalable.",
-    heroImage: "/public/concierge-agent.png",
+    heroImage: "/concierge-agent.png",
   }
 ]
