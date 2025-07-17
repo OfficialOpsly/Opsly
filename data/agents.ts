@@ -33,7 +33,7 @@ export const agents: AgentCard[] = [
     tagline: "“I triage 500 emails before lunch.”",
     intro: "If you CC me, I’ll CC-ya later 😄",
     description: "Ellie classifies, drafts and schedules emails with perfect tone-matching and CRM sync.",
-    heroImage: "/email-agent.jpg",
+    heroImage: "/email-agent.png",
   },
   {
     id: "recruiter-agent",
