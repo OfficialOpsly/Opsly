@@ -32,41 +32,40 @@ export default function AgentDetail({ agent }: AgentDetailProps) {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          <div className="bg-gray-100 dark:bg-gray-800/50 rounded-2xl p-6 flex items-center justify-center">
+        {/* Responsive column-reverse on mobile */}
+        <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12">
+          {/* Text Content */}
+          <div className="lg:w-1/2">
+            <div className="bg-white dark:bg-[#272829] p-6 rounded-3xl card">
+              <div className="mb-6">
+                <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">{agent.name}</h1>
+                <p className="text-gray-700 dark:text-gray-300 mt-2">{agent.description}</p>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Category</h3>
+                <span className="px-3 py-1 bg-gray-200 dark:bg-gray-800 rounded-full text-sm text-gray-800 dark:text-gray-200">
+                  {agent.category}
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-gray-700 dark:text-gray-300">{agent.tagline}</p>
+                <p className="text-gray-700 dark:text-gray-300">{agent.intro}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="lg:w-1/2 bg-gray-100 dark:bg-gray-800/50 rounded-2xl p-4 flex items-center justify-center">
             <Image
               src={agent.heroImage || "/placeholder.svg?height=600&width=800&query=project"}
               alt={agent.name}
               width={1200}
               height={675}
-              className="max-w-full h-auto object-contain max-h-[600px]"
+              className="w-full h-auto object-contain max-h-[300px] sm:max-h-[400px] lg:max-h-[600px]"
               priority
             />
-          </div>
-
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-white dark:bg-[#272829] p-6 rounded-3xl card">
-              <div className="flex items-center gap-4 mb-6">
-                <div>
-                  <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">{agent.name}</h1>
-                  <p className="text-gray-700 dark:text-gray-300">{agent.description}</p>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">Category</h3>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-gray-200 dark:bg-gray-800 rounded-full text-sm text-gray-800 dark:text-gray-200">
-                    {agent.category}
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                  <p className="text-gray-700 dark:text-gray-300">{agent.tagline}</p>
-                  <p className="text-gray-700 dark:text-gray-300">{agent.intro}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
