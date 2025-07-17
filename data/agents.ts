@@ -9,14 +9,6 @@ export interface AgentCard {
 }
 export const agents: AgentCard[] = [
   {
-    id: "email-agent",
-    name: "Ellie the Email Agent",
-    category: "Email",
-    tagline: "“I triage 500 emails before lunch.”",
-    intro: "If you CC me, I’ll CC-ya later 😄",
-    description: "Ellie classifies, drafts and schedules emails with perfect tone-matching and CRM sync.",
-    heroImage: "/email-agent.jpg",
-  },{
     id: "customer-service-agent",
     name: "Cimo the Customer Service Agent",
     category: "Customer Support",
@@ -33,6 +25,15 @@ export const agents: AgentCard[] = [
     intro: "My favourite drink? Conversion.",
     description: "Sal cold-calls leads, handles objections and pushes prospects into HubSpot or Salesforce.",
     heroImage: "/sales-agent.png",
+  },
+  {
+    id: "email-agent",
+    name: "Ellie the Email Agent",
+    category: "Email",
+    tagline: "“I triage 500 emails before lunch.”",
+    intro: "If you CC me, I’ll CC-ya later 😄",
+    description: "Ellie classifies, drafts and schedules emails with perfect tone-matching and CRM sync.",
+    heroImage: "/email-agent.jpg",
   },
   {
     id: "recruiter-agent",
